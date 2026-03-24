@@ -1,36 +1,63 @@
 openapi: 3.0.3
 info:
-  title: Employee Service API
+  title: Employee API
+  description: API specification for managing employees
   version: 1.0.0
-  description: API to retrieve employee details
 
 servers:
-  - url: https://api.example.com
-    description: Production server
+  - url: https://api.company.com/v1
 
 paths:
+  /employees:
+    get:
+      summary: Get all employees
+      description: Retrieve a list of all employees
+      responses:
+        '200':
+          description: A list of employees
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Employee'
+
+    post:
+      summary: Create a new employee
+      description: Add a new employee record
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmployeeInput'
+      responses:
+        '201':
+          description: Employee created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Employee'
+
   /employees/{employeeId}:
     get:
-      summary: Get employee details
-      description: Retrieve details of a specific employee by ID
+      summary: Get employee by ID
+      description: Retrieve details of a specific employee
       parameters:
         - name: employeeId
           in: path
           required: true
-          description: Unique identifier of the employee
           schema:
             type: string
       responses:
         '200':
-          description: Employee details retrieved successfully
+          description: Employee details
           content:
             application/json:
               schema:
                 $ref: '#/components/schemas/Employee'
         '404':
           description: Employee not found
-        '500':
-          description: Internal server error
 
 components:
   schemas:
@@ -39,20 +66,32 @@ components:
       properties:
         id:
           type: string
-          example: "E12345"
-        firstName:
+          example: "emp123"
+        name:
           type: string
-          example: "Tanushree"
-        lastName:
-          type: string
-          example: "Sharma"
-        email:
-          type: string
-          format: email
-          example: "tanushree.sharma@example.com"
+          example: "John Doe"
         department:
           type: string
           example: "Engineering"
-        role:
+        email:
           type: string
-          example: "Backend Engineer"
+          format: email
+          example: "john.doe@company.com"
+
+    EmployeeInput:
+      type: object
+      required:
+        - name
+        - department
+        - email
+      properties:
+        name:
+          type: string
+          example: "Jane Smith"
+        department:
+          type: string
+          example: "HR"
+        email:
+          type: string
+          format: email
+          example: "jane.smith@company.com"
