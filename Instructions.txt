@@ -1,0 +1,69 @@
+==================================================
+EMPLOYEE INSTRUCTIONS FOR WRITING TEST CASES
+==================================================
+
+1. PURPOSE
+----------
+This document provides standardized guidelines for creating, maintaining, and executing test cases to ensure consistency, accuracy, and quality across all projects.
+
+2. GENERAL GUIDELINES
+---------------------
+- Write test cases in clear, simple language.
+- Ensure each test case is independent (should not rely on another test case).
+- Follow the project’s naming conventions for easy identification.
+- Keep test cases atomic — one scenario per test case.
+
+3. TEST CASE STRUCTURE
+----------------------
+Each test case must include the following sections:
+
+- Test Case ID: Unique identifier (e.g., TC_Login_001).
+- Title: Short description of the test (e.g., "Verify login with valid credentials").
+- Preconditions: Any setup required before execution.
+- Test Steps: Step-by-step actions to perform.
+- Expected Result: The outcome if the system works correctly.
+- Actual Result: Filled during execution.
+- Status: Pass/Fail after execution.
+- Priority: High/Medium/Low based on business impact.
+
+4. WRITING EFFECTIVE TEST STEPS
+-------------------------------
+- Use numbered steps for clarity.
+- Be specific (e.g., “Enter username john_doe” instead of “Enter username”).
+- Avoid ambiguity — testers should not need assumptions.
+- Include input data and expected output.
+
+5. BEST PRACTICES
+-----------------
+- Positive & Negative Testing: Cover both valid and invalid scenarios.
+- Boundary Testing: Include edge cases (e.g., max/min input values).
+- Reusability: Write modular test cases that can be reused.
+- Traceability: Link test cases to requirements or user stories.
+- Review Process: Peer review test cases before execution.
+
+6. EXAMPLE TEST CASE
+--------------------
+Test Case ID: TC_Login_001
+Title: Verify login with valid credentials
+Preconditions: User account exists with username "john_doe" and password "Password123"
+
+Test Steps:
+1. Navigate to login page.
+2. Enter username "john_doe".
+3. Enter password "Password123".
+4. Click "Login".
+
+Expected Result: User is redirected to the dashboard.
+Actual Result: (To be filled during execution)
+Status: Pass/Fail
+Priority: High
+
+7. MAINTENANCE
+--------------
+- Update test cases when requirements change.
+- Archive obsolete test cases but keep them for reference.
+- Regularly review test coverage to avoid gaps.
+
+==================================================
+END OF DOCUMENT
+==================================================
